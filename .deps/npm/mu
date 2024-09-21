@@ -1,0 +1,8 @@
+/**
+ * Minified by jsDelivr using Terser v5.17.1.
+ * Original file: /npm/mu@2.0.5/index.js
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+"use strict";var assert=require("assert"),uuid=require("uuid"),pino=require("pino"),muError=require("mu-error"),createRouter=require("mu-router"),DEFAULT_TTL=10;function createMu(e){(e=e||{}).errors=e.errors||{};var r=e.logger||pino(),t=e.dev,o=muError(Object.assign({dev:t},e.errors)),u=createRouter({logger:r,mue:o});e.logLevel&&(r.level=e.logLevel);var a={inbound:function(e,r){n(e,r(a,{direction:"inbound"}))},outbound:function(e,r){n(e,r(a,{direction:"outbound"}))},define:n,dispatch:function(e,t){var o=uuid();if(t=t||noop,assert(e,"dispatch requires a valid message"),assert("function"==typeof t,"dispatch requires a valid callback handler"),r.debug("dispatching message: "+e),!(e.pattern||e.response))return u.addRoute(null,{muid:o,tf:t,type:"callback"}),void u.route({pattern:e,protocol:{path:[o],trace:[o],ttl:DEFAULT_TTL}},t);u.route(e,t)},tearDown:u.tearDown,print:u.print,log:r,error:o,DEV_MODE:t,transports:u.transports};return a;function n(e,t){assert(e,"define requires a valid pattern"),assert(t,"define requires a valid transport or pattern handler"),r.debug("adding pattern route: "+e),"function"==typeof t?u.addRoute(e,{muid:uuid(),tf:t,type:"handler"}):u.addRoute(e,t)}}function noop(){}createMu.log=Object.keys(pino.levels.values).reduce(((e,r)=>(e["level"+r[0].toUpperCase()+r.slice(1)]=r,e)),{}),module.exports=createMu;
+//# sourceMappingURL=/sm/b90ccf74b266a55f9ec283477bda6cdfad72c94de720c7cc3ec2b1dba138038a.map

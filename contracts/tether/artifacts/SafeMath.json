@@ -1,0 +1,61 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"linkReferences": {},
+			"object": "60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820e101103e66075469a6e6886afed481b46d1e61f8abb95b235445a5535f6553660029",
+			"opcodes": "PUSH1 0x60 PUSH1 0x40 MSTORE CALLVALUE ISZERO PUSH1 0xE JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH1 0x35 DUP1 PUSH1 0x1B PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN STOP PUSH1 0x60 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT STOP LOG1 PUSH6 0x627A7A723058 KECCAK256 0xe1 ADD LT RETURNDATACOPY PUSH7 0x75469A6E6886A INVALID 0xd4 DUP2 0xb4 PUSH14 0x1E61F8ABB95B235445A5535F6553 PUSH7 0x290000000000 ",
+			"sourceMap": "116:790:0:-;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"linkReferences": {},
+			"object": "6060604052600080fd00a165627a7a72305820e101103e66075469a6e6886afed481b46d1e61f8abb95b235445a5535f6553660029",
+			"opcodes": "PUSH1 0x60 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT STOP LOG1 PUSH6 0x627A7A723058 KECCAK256 0xe1 ADD LT RETURNDATACOPY PUSH7 0x75469A6E6886A INVALID 0xd4 DUP2 0xb4 PUSH14 0x1E61F8ABB95B235445A5535F6553 PUSH7 0x290000000000 ",
+			"sourceMap": "116:790:0:-;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "10600",
+				"executionCost": "61",
+				"totalCost": "10661"
+			},
+			"internal": {
+				"add(uint256,uint256)": "infinite",
+				"div(uint256,uint256)": "infinite",
+				"mul(uint256,uint256)": "infinite",
+				"sub(uint256,uint256)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

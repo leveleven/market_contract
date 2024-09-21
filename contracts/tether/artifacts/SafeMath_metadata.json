@@ -1,0 +1,36 @@
+{
+	"compiler": {
+		"version": "0.4.17+commit.bdeb9e52"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {},
+			"title": "SafeMath"
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/tether/TetherToken.sol": "SafeMath"
+		},
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/tether/TetherToken.sol": {
+			"keccak256": "0x73454f5e6ca9de61eb33800850bb00ce997df8d0584478c935685d1117f148ad",
+			"urls": [
+				"bzzr://ad292bf262346b5333d52994a9711d5a9885c48703377507de14cdfbc6cc8908"
+			]
+		}
+	},
+	"version": 1
+}
