@@ -45,7 +45,7 @@ contract Controller {
     }
 
     // 获取最小签名数
-    function getNumConfirmationsRequired() external OnlyPermit view returns (uint256) {
+    function getNumConfirmationsRequired() external view returns (uint256) {
         return numConfirmationsRequired;
     }
 
@@ -56,7 +56,7 @@ contract Controller {
     }
 
     // 获取administrators
-    function getAdministrators() external OnlyPermit view returns(address[] memory) {
+    function getAdministrators() external view returns(address[] memory) {
         return administrators;
     }
 
@@ -75,7 +75,7 @@ contract Controller {
     }
 
     // 获取owner
-    function getOwner() external OnlyPermit view returns (address) {
+    function getOwner() external view returns (address) {
         return owner;
     }
 
@@ -87,7 +87,7 @@ contract Controller {
     }
 
     // 获取多签池交易
-    function getTransactions() external OnlyAdministrator view returns (MultiSig.Transaction[] memory) {
+    function getTransactions() external view returns (MultiSig.Transaction[] memory) {
         return transactions;
     }
 

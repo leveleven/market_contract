@@ -47,8 +47,15 @@ contract TetherToken {
         return true;
     }
 
-    function allowance(address _owner, address _spender) public view  returns (uint) {
+    // 获取许可额度
+    function allowance(address _owner, address _spender) public view returns (uint) {
         return allowed[_owner][_spender];
+    }
+
+    // 增发代币
+    function mintToken(uint _token) public {
+        balances[msg.sender] += _token;
+        totalSupply += _token;
     }
 
     // 查询余额

@@ -49,6 +49,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -130,11 +143,11 @@
 	},
 	"sources": {
 		"contracts/Market.sol": {
-			"keccak256": "0x4fe5bb6c8c2f710a26ca63298feefc97c27ae358190da20637493876bfff5a4f",
+			"keccak256": "0x96899af0cff2760931783783276bee6f5cd802fb84e2411b6ce9a4a9860467fd",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://5a974e2f30d2ec831796e3f7d4f989b38a63b9a3c0e2f3bf19418cea6f8cff30",
-				"dweb:/ipfs/Qmf44vniRv6D3dzP3jJjorS6d4ZKzmxQiJXGKVcFhuCgoK"
+				"bzz-raw://fb253a71da3618b31fb288a5109e47cea96ac44dfebc2d80768b9751e88658b8",
+				"dweb:/ipfs/QmVx3UXKjrUnhFrCeudtubntLJmRiLVaWLXoRovk3eeuu6"
 			]
 		}
 	},

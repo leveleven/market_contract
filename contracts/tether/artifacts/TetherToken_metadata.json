@@ -205,6 +205,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_token",
+						"type": "uint256"
+					}
+				],
+				"name": "mintToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "name",
 				"outputs": [
@@ -338,11 +351,11 @@
 	},
 	"sources": {
 		"contracts/tether/TetherToken.sol": {
-			"keccak256": "0xaf5be60eb9946846fe993c4675b472baf1775ffc3fcdd8a8e7ec6dad5c219dfe",
+			"keccak256": "0x0936d095b84b24c9f459ef13054ca9eb456f6a539cd69035aef8b217fdd1088c",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://73ebf4af3bd1ddee6a9008f9b7d4e1e1404e88c146c5022de98d76f46cfc5e63",
-				"dweb:/ipfs/QmfBNsqPDHceCgradNLBuF54zkpyi2jyTpDBDBwnEvZNFZ"
+				"bzz-raw://32434695556f9e3ba4e7eb5ce1b2a29ffefbe335adcc6ab85e5311691a7a1f1d",
+				"dweb:/ipfs/QmUWu3hWxEYqkTA3v7cVsnwADktkKLSaFhpJz2skWQZ7B4"
 			]
 		}
 	},
