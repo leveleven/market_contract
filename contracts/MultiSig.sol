@@ -18,16 +18,27 @@ library MultiSig {
         bool multi;
     }
 
-    // 提交多签消息
-    function submitTransaction(Transaction[] storage _transactions, address _to, bytes memory _data, bool _multi) internal {
+    // 提交多签消息，并确认
+    function submitTransaction(
+        Transaction[] storage _transactions, 
+        address _to, 
+        bytes memory _data, 
+        mapping(uint => mapping(address => bool)) storage _isConfirmed,
+        mapping(uint => uint) storage _numConfirmations,
+        bool _multi
+    ) internal {
         _transactions.push(Transaction({
             data: _data,
             to: _to,
             executed: false,
             multi: _multi
         }));
+        uint index = _transactions.length;
+        
+        _isConfirmed[index][msg.sender] = true;
+        _numConfirmations[index]++;
 
-        emit SubmitTransaction(msg.sender, _transactions.length, _data);
+        emit SubmitTransaction(msg.sender, index, _data);
     }
 
     // 确认消息

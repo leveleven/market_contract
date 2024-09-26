@@ -6,7 +6,28 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_initialSupply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_decimals",
+						"type": "uint8"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -317,11 +338,11 @@
 	},
 	"sources": {
 		"contracts/tether/TetherToken.sol": {
-			"keccak256": "0x598416b06b0dce31142eb3c1844ad77db946ac50914d37c2f4ea9cc8be2e99fe",
-			"license": "MIT",
+			"keccak256": "0xaf5be60eb9946846fe993c4675b472baf1775ffc3fcdd8a8e7ec6dad5c219dfe",
+			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://134d4e2a7635f73c1e4ecfeee10fbb4af43b45f4b169acfcf57b898d16940971",
-				"dweb:/ipfs/QmWRfANRdxX9D6YzDJPichFF5RVktLFcTQ7V8PaCeLe9TD"
+				"bzz-raw://73ebf4af3bd1ddee6a9008f9b7d4e1e1404e88c146c5022de98d76f46cfc5e63",
+				"dweb:/ipfs/QmfBNsqPDHceCgradNLBuF54zkpyi2jyTpDBDBwnEvZNFZ"
 			]
 		}
 	},

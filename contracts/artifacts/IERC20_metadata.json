@@ -130,11 +130,11 @@
 	},
 	"sources": {
 		"contracts/Market.sol": {
-			"keccak256": "0xd9a39161119b697bc2a00a63d74a4f39daca20fe82d65ba74c121f54c947d6e8",
+			"keccak256": "0x4fe5bb6c8c2f710a26ca63298feefc97c27ae358190da20637493876bfff5a4f",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://2a3c0e5307f2b92ac8f00104911e65b581b80a34a1d5bc9fe7d468704ee1daf3",
-				"dweb:/ipfs/QmbaBX9BnNt3v8PD4T649qbBx6wa4objojuqFwAHg6iGwZ"
+				"bzz-raw://5a974e2f30d2ec831796e3f7d4f989b38a63b9a3c0e2f3bf19418cea6f8cff30",
+				"dweb:/ipfs/Qmf44vniRv6D3dzP3jJjorS6d4ZKzmxQiJXGKVcFhuCgoK"
 			]
 		}
 	},

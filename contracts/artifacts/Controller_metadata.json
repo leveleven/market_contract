@@ -8,11 +8,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_market",
-						"type": "address"
-					},
-					{
 						"internalType": "address[]",
 						"name": "_admin",
 						"type": "address[]"
@@ -107,11 +102,16 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_market",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
 						"name": "_newOwner",
 						"type": "address"
 					}
 				],
-				"name": "commitSetOwner",
+				"name": "commitSetMarketOwner",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -133,6 +133,45 @@
 				"name": "confirmTransaction",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAdministrators",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNumConfirmationsRequired",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -208,6 +247,19 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "setOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -238,19 +290,19 @@
 	},
 	"sources": {
 		"contracts/Controller.sol": {
-			"keccak256": "0xb56ea01e977c5185b7a398cc63a1d604d2359131bcb2f00b208e30e7309d51c2",
+			"keccak256": "0xe7df272cf66f9cf8075fff54b16282e27f1eb8801c720e02aa9be17a977c8a9d",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e78a31828c7b18d4a70480bcb7fd06590ecac4a00cb68e1aa9d2b8bbbc78f37f",
-				"dweb:/ipfs/QmU7i4zP5B9hT6EuiQMA6GGSwA7R3Kf6WJyvEmqZggnB8Y"
+				"bzz-raw://11cdae1f626c9def0ca96f5331b3ac30de46a58c6e7f25d6794a56ef36f6d1fb",
+				"dweb:/ipfs/QmceHoLm56qTmyEBnxKdwoeKyZjBuGTXi3Sm8ekXynAZDS"
 			]
 		},
 		"contracts/MultiSig.sol": {
-			"keccak256": "0x35b4cc28708afffbfd1d753901068340f614ca337d5f54d0c14952c66fd39fbf",
+			"keccak256": "0x6663a2272705f92d45b64849f962dd4d1b92bf9bd55ba1dd0b4bcf4b0cc9c407",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://bdd7f9b095b1ae47c340c1fbe7deb0d099a80a853f92f35b1d8c0d4ec66d0d05",
-				"dweb:/ipfs/QmdxuHQ1nc1LC9Rx52izCAKzR66M46BQx8iURBL2hFkR7M"
+				"bzz-raw://eb025fec8bc2bce8401f142cd6d6c6a213dd19a43abb31e69c336cdf0cf67e44",
+				"dweb:/ipfs/QmdXUT1282tX1opyTNPL366uLFRU39JxKjhakPTZgZL69i"
 			]
 		}
 	},

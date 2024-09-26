@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
 contract TetherToken {
@@ -16,17 +16,14 @@ contract TetherToken {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
     // 构造函数
-    // constructor(uint _initialSupply, string memory _name, string memory _symbol, uint8 _decimals) {
-    constructor() {
-        totalSupply = 100000000000000;
-        // name = _name;
-        // symbol = _symbol;
-        name = "vUSDT";
-        symbol = "vUSDT";
-        // decimals = _decimals;
-        decimals = 6;
+    constructor(uint _initialSupply, string memory _name, string memory _symbol, uint8 _decimals) {
+        totalSupply = _initialSupply;
+        name = _name;
+        symbol = _symbol;
+        decimals = _decimals;
         owner = msg.sender;
-        balances[owner] = 100000000000000;
+
+        balances[msg.sender] = _initialSupply;
     }
 
     // 转账函数

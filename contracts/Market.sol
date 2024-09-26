@@ -9,8 +9,20 @@ interface IERC20 {
 }
 
 contract Market{
+    event USDTReceive(
+        address indexed buyer,
+        uint core,
+        uint day,
+        uint cost
+    );
+
     modifier OnlyController() {
         require(isController[msg.sender], "Only the controller can use");
+        _;
+    }
+
+    modifier OnlyOwner() {
+        require(isOwner[msg.sender], "Only the owner can use");
         _;
     }
 
@@ -19,19 +31,22 @@ contract Market{
     address private owner;
     address private controller;
     
-    mapping(address => bool) private isController;   
+    mapping(address => bool) private isOwner;
+    mapping(address => bool) private isController;
 
     IERC20 private usdt;
 
     constructor(address _owner, address _controller, address _usdt) {
         owner = _owner;
+        isOwner[_owner] = true;
+
         controller = _controller;
         isController[_controller] = true;
 
         usdt = IERC20(_usdt);
     }
 
-    function usdtApprove(uint256 _core, uint256 _days) external returns (uint) {
+    function usdtApprove(uint _core, uint _days) internal returns (uint) {
         // 计算金额
         uint cost;
         if (_days == 30) {
@@ -50,21 +65,30 @@ contract Market{
     }
 
     // 接收并转发usdt到合约所有者
-    function usdtReceive(uint _cost) external {
+    function usdtReceive(uint _core, uint _days) external {
+        uint cost = usdtApprove(_core, _days);
         // 发起转账
-        bool transfer = usdt.transferFrom(msg.sender, address(this), _cost);
+        bool transfer = usdt.transferFrom(msg.sender, address(this), cost);
         require(transfer, "USDT transfer failed");
 
         // 将代币发送到合约所有者的地址
         if (sendToOwner) {
-            usdt.transfer(owner, _cost);
+            usdt.transfer(owner, cost);
         }
+
+        emit USDTReceive(msg.sender, _core, _days, cost);
+    }
+
+    function getOwner() external OnlyOwner view returns (address) {
+        return owner;
     }
 
     // 合约拥有者设置 (调用出错)
     function setOwner(address _newOwner) external OnlyController {
         require((_newOwner != owner), "Please set a new owner.");
+        isOwner[owner] = false;
         owner = _newOwner;
+        isOwner[_newOwner] = true;
     }
 
     // 设置控制合约
@@ -75,13 +99,17 @@ contract Market{
         isController[_newController] = true;
     }
 
+    function getSendSwitch() external OnlyOwner view returns (bool) {
+        return sendToOwner;
+    }
+
     // 自动发送到owner钱包开关
-    function sendSwitch() external OnlyController {
+    function sendSwitch() external OnlyOwner {
         sendToOwner = !sendToOwner;
     }
 
     // 手动提款
-    function usdtWithdraw() external OnlyController {
+    function usdtWithdraw() external OnlyOwner {
         uint256 balance = usdt.balanceOf(address(this));
         usdt.transfer(owner, balance);
     }
