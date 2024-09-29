@@ -290,11 +290,11 @@
 	},
 	"sources": {
 		"contracts/Controller.sol": {
-			"keccak256": "0xe7df272cf66f9cf8075fff54b16282e27f1eb8801c720e02aa9be17a977c8a9d",
+			"keccak256": "0xcaf2404e7c78949c2d2ead9ec89e831fad847d0599e29bc1b462b5a79e0ac298",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://11cdae1f626c9def0ca96f5331b3ac30de46a58c6e7f25d6794a56ef36f6d1fb",
-				"dweb:/ipfs/QmceHoLm56qTmyEBnxKdwoeKyZjBuGTXi3Sm8ekXynAZDS"
+				"bzz-raw://d177d901e0476f9b1cb9a528ca74165e65f0cb6ba30c46e52e54f0f04361e77c",
+				"dweb:/ipfs/QmQWkFwTJzLgX3kuRQ5vJurYFUbdgFPdWSQACSW5ibk1Lk"
 			]
 		},
 		"contracts/MultiSig.sol": {

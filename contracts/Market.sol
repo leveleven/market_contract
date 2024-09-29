@@ -63,6 +63,7 @@ contract Market{
         return cost;
     }
 
+    // 获取token合约精度
     function getDecimals() external view returns (uint8) {
         uint8 decimals = stableToken.decimals();
         return decimals;
