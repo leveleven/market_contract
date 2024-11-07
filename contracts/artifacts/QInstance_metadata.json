@@ -9,17 +9,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_controller",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_token",
+						"name": "initialOwner",
 						"type": "address"
 					}
 				],
@@ -278,49 +268,6 @@
 				"type": "event"
 			},
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "buyer",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "string",
-						"name": "peerid",
-						"type": "string"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "nft_id",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "core",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "day",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "cost",
-						"type": "uint256"
-					}
-				],
-				"name": "USDTReceive",
-				"type": "event"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -361,30 +308,6 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_core",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_days",
-						"type": "uint256"
-					}
-				],
-				"name": "calculate",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
 						"name": "tokenId",
 						"type": "uint256"
 					}
@@ -395,32 +318,6 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getDecimals",
-				"outputs": [
-					{
-						"internalType": "uint8",
-						"name": "",
-						"type": "uint8"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getSendSwitch",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -506,6 +403,24 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "uri",
+						"type": "string"
+					}
+				],
+				"name": "safeMint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "from",
 						"type": "address"
 					},
@@ -554,13 +469,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "sendSwitch",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -574,19 +482,6 @@
 					}
 				],
 				"name": "setApprovalForAll",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_newController",
-						"type": "address"
-					}
-				],
-				"name": "setController",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -674,36 +569,6 @@
 					}
 				],
 				"name": "transferOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "_peerid",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_core",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_days",
-						"type": "uint256"
-					}
-				],
-				"name": "usdtReceive",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "usdtWithdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -861,7 +726,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Market.sol": "Market"
+			"contracts/nft.sol": "QInstance"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -1027,12 +892,12 @@
 				"dweb:/ipfs/QmVUSvooZKEdEdap619tcJjTLcAuH6QBdZqAzWwnAXZAWJ"
 			]
 		},
-		"contracts/Market.sol": {
-			"keccak256": "0x13c4bf470e36b644178eb5c5bd3d78674aef625cf8368f17e5c6fbd801a7ad41",
-			"license": "GPL-3.0",
+		"contracts/nft.sol": {
+			"keccak256": "0x4aed5382823df6c3834bc7e1f5a27928ede89ef8dfba95866c3e1b39e979cb5e",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://963bcf7109c2ee5ca3355d83d01f5eae6636bbcdc663909db5706f94f741c7f1",
-				"dweb:/ipfs/QmZPdYyZmvHAuHwsqnHdUXaJU13Po4tmSvSYEC7v6vBsMb"
+				"bzz-raw://da085dcaf5a91d0fc51d6cbbf17fa9455cb16468ae41201b60b3b47a812986fa",
+				"dweb:/ipfs/Qmesw3rc7gEuZ4zzGJYiDByYcSjeDUGuyBRFqceqn2NfXT"
 			]
 		}
 	},

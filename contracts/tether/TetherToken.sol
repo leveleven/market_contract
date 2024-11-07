@@ -76,4 +76,11 @@ contract TetherToken {
         emit Transfer(_from, _to, _value); // 触发转账事件
         return true;
     }
+
+    function concatenateStrings(string calldata first, string calldata second, string calldata thired) external pure returns (string memory) {
+        // 使用 abi.encodePacked 拼接字符串
+        string memory concatenatedString = string(abi.encodePacked("{\"peerid\":", first, ",\"core\":", second, ",\"days\":", thired, "}"));
+        return concatenatedString;
+        // 触发事件
+    }
 }

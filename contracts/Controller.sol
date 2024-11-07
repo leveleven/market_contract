@@ -1,39 +1,28 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity ^0.8.22;
 
 import "contracts/MultiSig.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Controller {
+contract Controller is Ownable {
     modifier OnlyAdministrator() {
         require(isAdministrator[msg.sender], "Only the administrator can use");
         _;
     }
 
-    modifier OnlyOwner() {
-        require(isOwner[msg.sender], "Only the owner can use");
-        _;
-    }
-
-    modifier OnlyPermit() {
-        require((isAdministrator[msg.sender] || isOwner[msg.sender]), "Only permit address can use");
-        _;
-    }
-
     uint256 private numConfirmationsRequired;
-    address private owner;
 
     address[] private administrators;
     MultiSig.Transaction[] private transactions;
 
-    mapping(address => bool) private isOwner;
     mapping(address => bool) private isAdministrator;
     mapping(uint => uint) private numConfirmations;
     mapping(uint => mapping(address => bool)) private isConfirmed;
 
 
-    constructor(address[] memory _admin) {
-        owner = msg.sender;
-        isOwner[owner] = true;
+    constructor(address[] memory _admin) 
+        Ownable(msg.sender)
+    {
         numConfirmationsRequired = _admin.length;
 
         for (uint8 index = 0; index < numConfirmationsRequired; index++) {
@@ -50,7 +39,7 @@ contract Controller {
     }
 
     // 设置最小确认数
-    function setConfirmationsRequired(uint256 _value) external OnlyOwner {
+    function setConfirmationsRequired(uint256 _value) external onlyOwner {
         require(((_value >= 1)&&(_value <= administrators.length)), "required number must >= 1 or <= controller member.");
         numConfirmationsRequired = _value;
     }
@@ -61,7 +50,7 @@ contract Controller {
     }
 
     // 设置administrators
-    function setAdministrators(address[] memory _admin) external OnlyOwner {
+    function setAdministrators(address[] memory _admin) external onlyOwner {
         for (uint8 index = 0; index < administrators.length; index++ ) {
             isAdministrator[administrators[index]] = false;
         }
@@ -72,18 +61,6 @@ contract Controller {
                 isAdministrator[_admin[index]] = true;
             }
         }
-    }
-
-    // 获取owner
-    function getOwner() external view returns (address) {
-        return owner;
-    }
-
-    // 设置owner
-    function setOwner(address _owner) external OnlyOwner {
-        isOwner[owner] = false;
-        owner = _owner;
-        isOwner[_owner] = true;
     }
 
     // 获取多签池交易

@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity ^0.8.22;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 interface IERC20 {
     function transferFrom(address sender, address recipient, uint amount) external returns (bool);
@@ -9,10 +13,11 @@ interface IERC20 {
     function decimals() external view returns (uint8);
 }
 
-contract Market{
+contract Market is ERC721, ERC721URIStorage, Ownable {
     event USDTReceive(
-        bytes indexed pid,
         address indexed buyer,
+        string peerid,
+        uint nft_id,
         uint core,
         uint day,
         uint cost
@@ -23,25 +28,19 @@ contract Market{
         _;
     }
 
-    modifier OnlyOwner() {
-        require(isOwner[msg.sender], "Only the owner can use");
-        _;
-    }
-
     bool private sendToOwner = false;
+    uint256 private _nextTokenId;
 
-    address private owner;
     address private controller;
     
-    mapping(address => bool) private isOwner;
     mapping(address => bool) private isController;
 
     IERC20 private stableToken;
 
-    constructor(address _owner, address _controller, address _token) {
-        owner = _owner;
-        isOwner[_owner] = true;
-
+    constructor(address _owner, address _controller, address _token) 
+        ERC721("QInstance", "QINS")
+        Ownable(_owner)
+    {
         controller = _controller;
         isController[_controller] = true;
 
@@ -79,7 +78,7 @@ contract Market{
     }
 
     // 接收并转发usdt到合约所有者
-    function usdtReceive(bytes memory _pid, uint _core, uint _days) external {
+    function usdtReceive(string calldata _peerid, uint _core, uint _days) external {
         uint cost = usdtApprove(_core, _days);
         // 发起转账
         bool transfer = stableToken.transferFrom(msg.sender, address(this), cost);
@@ -87,22 +86,16 @@ contract Market{
 
         // 将代币发送到合约所有者的地址
         if (sendToOwner) {
-            stableToken.transfer(owner, cost);
+            address _owner = owner();
+            stableToken.transfer(_owner, cost);
         }
 
-        emit USDTReceive(_pid, msg.sender, _core, _days, cost);
-    }
-
-    function getOwner() external view returns (address) {
-        return owner;
-    }
-
-    // 合约拥有者设置 (调用出错)
-    function setOwner(address _newOwner) external OnlyController {
-        require((_newOwner != owner), "Please set a new owner.");
-        isOwner[owner] = false;
-        owner = _newOwner;
-        isOwner[_newOwner] = true;
+        uint256 tokenId = _nextTokenId++;
+        string memory uri = string(abi.encodePacked("{\"peerid\":", _peerid, "\"core\":", _core, ",\"days\":", _days, "}"));
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, uri);
+        
+        emit USDTReceive(msg.sender, _peerid, tokenId, _core, _days, cost);
     }
 
     // 设置控制合约
@@ -118,13 +111,33 @@ contract Market{
     }
 
     // 自动发送到owner钱包开关
-    function sendSwitch() external OnlyOwner {
+    function sendSwitch() external onlyOwner {
         sendToOwner = !sendToOwner;
     }
 
     // 手动提款
-    function usdtWithdraw() external OnlyOwner {
+    function usdtWithdraw() external onlyOwner {
         uint256 balance = stableToken.balanceOf(address(this));
-        stableToken.transfer(owner, balance);
+        stableToken.transfer(owner(), balance);
+    }
+
+    // The following functions are overrides required by Solidity.
+
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
+    {
+        return super.tokenURI(tokenId);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
     }
 }

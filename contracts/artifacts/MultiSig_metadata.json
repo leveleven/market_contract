@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.27+commit.40a35a09"
+		"version": "0.8.28+commit.7893614a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -116,11 +116,11 @@
 	},
 	"sources": {
 		"contracts/MultiSig.sol": {
-			"keccak256": "0x6663a2272705f92d45b64849f962dd4d1b92bf9bd55ba1dd0b4bcf4b0cc9c407",
+			"keccak256": "0xb0a4ca5ff73804cbb9d5780e25399276fde912d6762b04fcc4730f54f03d0426",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://eb025fec8bc2bce8401f142cd6d6c6a213dd19a43abb31e69c336cdf0cf67e44",
-				"dweb:/ipfs/QmdXUT1282tX1opyTNPL366uLFRU39JxKjhakPTZgZL69i"
+				"bzz-raw://750e0ead132fa6b463e13a6036079bafa9f8245462cda30112eb9ac4b5c6ed41",
+				"dweb:/ipfs/QmWGrEquHhj4LSCdsS46w2iXKewBKxU151WTuRrHKK1v5i"
 			]
 		}
 	},
